@@ -12,7 +12,6 @@ class Main {
     int whereIsX = 0;
     int myIndex = 0;
     
-    
     // split string to parse elements
     String [] elements = str.split(" ");
     
