@@ -1,7 +1,5 @@
 package codility;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class BattleShip {
 	
@@ -12,11 +10,9 @@ public class BattleShip {
 		this.bombCoords = T.split(",");
 		this.N = N;
 	}
-	/**
+	/*
 	 * calculateCoordinates accepts an array of Strings containing coordinates of top left & top right, it parses this input
 	 * to create an array of strings with specific coordinates for each point
-	 * @param coordinates array of Strings with top left & top right coordinates
-	 * @return newCoordinates array of Strings with specific coordinates for each point 
 	 */
 	public String[] calculateCoordinates(String[] coordinates) {
 		String[] newCoordinates = new String[coordinates.length];
@@ -27,9 +23,7 @@ public class BattleShip {
     		int two = coordinate.charAt(1)-65;
     		int three = coordinate.charAt(3)-49;
     		int four = coordinate.charAt(4)-65;
-    		
-    		System.out.println(one + " " + two + " " + three + " " + four);
-    		
+
     		if (one == three) {
     			for (int i=0; i<=four-two;i++) {
     				newCoordinates[count] += one + "" + i + " ";
@@ -46,7 +40,10 @@ public class BattleShip {
 		return newCoordinates;
 	}
 	
-	
+	/*
+	 * applyBombsToShips accepts two arrays of coordinates, one for ships and one for bombs. The bomb coordinates are applied to the ship
+	 * coordinates and the method returns a comma separated String of number of ships - hit, sunk.
+	 */
     public String applyBombsToShips(String[] ships, String[] bombs) {
     	String result;
     	
@@ -68,13 +65,17 @@ public class BattleShip {
     		}
     	}
     	result = hit + "," + sunk;
-    	return "result";
+    	return result;
     }
     	
  
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BattleShip test = new BattleShip(4, "1B 2C,2D 4D", "");
+		BattleShip test = new BattleShip(4, "1B 2C,2D 4D", "1B 2C, 2A 2D");
+		test.ships = test.calculateCoordinates(test.shipCoords);
+		test.bombs = test.calculateCoordinates(test.bombCoords);
+		System.out.println(test.applyBombsToShips(test.ships, test.bombs));
+		System.out.println("Game over............");
 
 	}
 	
